@@ -8,8 +8,8 @@ public class BackgroundPanel extends JPanel{
     Image image;
     public BackgroundPanel(Image image){
         super();
-        this.setOpaque(false);  //是否透明
-        this.setLayout(null);  //空布局setBounds()
+        this.setOpaque(false);  //鏄惁閫忔槑
+        this.setLayout(null);  //绌哄竷灞�setBounds()
         this.image=image;
     }
     @Override
