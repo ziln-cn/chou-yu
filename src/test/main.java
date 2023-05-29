@@ -1,5 +1,6 @@
 package test;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.ButtonGroup;
@@ -7,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.UIManager;
 
 class Student extends Person{
 
@@ -18,13 +20,13 @@ class Student extends Person{
     @Override
     public String getTiTle() {
         // TODO Auto-generated method stub
-        String title="Ñ§ºÅ"+no2+"ĞÕÃû:"+name2;
+        String title="å­¦å·"+no2+"å§“å:"+name2;
         return null;
     }
-    //¹¹Ôì·½·¨
+    //æ„é€ æ–¹æ³•
 
 }
-//Ñ§ÉúĞÅÏ¢
+//å­¦ç”Ÿä¿¡æ¯
 
 
 class Teacher extends Person {
@@ -36,13 +38,13 @@ class Teacher extends Person {
     @Override
     public String getTiTle() {
         // TODO Auto-generated method stub
-        String title="¹¤ºÅ"+no2+"ĞÕÃû:"+name2;
+        String title="å·¥å·"+no2+"å§“å:"+name2;
         return null;
     }
-    //¹¹Ôì·½·¨
+    //æ„é€ æ–¹æ³•
 
 }
-//ÀÏÊ¦ĞÅÏ¢
+//è€å¸ˆä¿¡æ¯
 
 
 class DefaultPerson extends Person{
@@ -55,12 +57,12 @@ class DefaultPerson extends Person{
     @Override
     public String getTiTle() {
         // TODO Auto-generated method stub
-        return "ºş±±¿Æ¼¼Ö°ÒµÑ§Ôº";
+        return "æ¹–åŒ—ç§‘æŠ€èŒä¸šå­¦é™¢";
     }
-    //¹¹Ôì·½·¨
+    //æ„é€ æ–¹æ³•
 
 }
-//ÅÉÉúÀà
+//æ´¾ç”Ÿç±»
 
 
 
@@ -85,7 +87,7 @@ class PersonFactory{
     }
 
 }
-//ÅĞ¶ÏÒÔ¼°¹¤³§»¯´´½¨ÊµÀı¶ÔÏó
+//åˆ¤æ–­ä»¥åŠå·¥å‚åŒ–åˆ›å»ºå®ä¾‹å¯¹è±¡
 
 
 
@@ -99,7 +101,7 @@ abstract class Person {
     public static final int TYPE_DEFAULT=0;
     public static final int TYPE_STUDENT=1;
     public static final int TYPE_TEACHER=2;
-    //´´½¨³ÉÔ±±äÁ¿
+    //åˆ›å»ºæˆå‘˜å˜é‡
 
     public Person(String no2, String name2, int typeStudent) {
         // TODO Auto-generated constructor stub
@@ -122,34 +124,34 @@ abstract class Person {
     public void setType(int type) {
         this.type = type;
     }
-    //·â×°
+    //å°è£…
     public abstract String getTiTle();
 
 }
-//Person¸¸Àà
+//Personçˆ¶ç±»
 
 
 public class main extends JFrame {
 
     private ButtonGroup group=new ButtonGroup();
-    private JRadioButton rbStu=new JRadioButton("Ñ§Éú");
-    private JRadioButton rbTracher=new JRadioButton("½ÌÊ¦");
+    private JRadioButton rbStu=new JRadioButton("å­¦ç”Ÿ");
+    private JRadioButton rbTracher=new JRadioButton("æ•™å¸ˆ");
 
-    private JButton btnStart=new JButton("¿ªÊ¼³é½±");
-    private JButton btnReset=new JButton("ÖØÖÃ³é½±½á¹û");
+    private JButton btnStart=new JButton("å¼€å§‹æŠ½å¥–");
+    private JButton btnReset=new JButton("é‡ç½®æŠ½å¥–ç»“æœ");
 
-    private JLabel picLabel=new JLabel("Í¼Æ¬",JLabel.CENTER);
-    private JLabel titleLabel=new JLabel("ºş±±¿Æ¼¼Ö°ÒµÑ§Ôº",JLabel.CENTER);
-    //´´½¨×é¼ş
+    private JLabel picLabel=new JLabel("å›¾ç‰‡",JLabel.CENTER);
+    private JLabel titleLabel=new JLabel("æ¹–åŒ—ç§‘æŠ€èŒä¸šå­¦é™¢",JLabel.CENTER);
+    //åˆ›å»ºç»„ä»¶
 
 
 
     public main(){
-        this.setTitle("Ëæ»ú³é½±ÏµÍ³");
+        this.setTitle("éšæœºæŠ½å¥–ç³»ç»Ÿ");
         this.setBounds(650, 200, 450, 600);
         this.setResizable(false);
         BackgroundPanel bp=new BackgroundPanel(Toolkit.getDefaultToolkit().
-                getImage(main.class.getResource("/imgs/main.png"))); //»ñÈ¡Í¼Æ¬ ·´Éä»úÖÆ
+                getImage(main.class.getResource("/imgs/main.png"))); //è·å–å›¾ç‰‡ åå°„æœºåˆ¶
         this.setContentPane(bp);
 
 
@@ -165,17 +167,26 @@ public class main extends JFrame {
 
         picLabel.setBounds(90, 85, 250, 300);
         titleLabel.setBounds(60, 380, 300, 50);
-        Font font=new Font("Á¥Êé",Font.BOLD,24);
+        Font font=new Font("å¾®è½¯é›…é»‘",Font.BOLD,24);
         titleLabel.setFont(font);
+        titleLabel.setForeground(Color.RED);
         bp.add(titleLabel);bp.add(picLabel);
     }
-    //¹¹Ôì·½·¨
+    //æ„é€ æ–¹æ³•
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
+    	try{
+    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+    	}catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}//æ°´æ™¶é£æ ¼
+    	
+    	
         main frame=new main();
         frame.setVisible(true);
     }
 
 }
-//Ö÷·½·¨
+//ä¸»æ–¹æ³•
