@@ -13,6 +13,7 @@
 4.点击`General/Existing projects into workspace`<br>
 5.选择`select archive file`<br>
 6.点击`Browse...`选择压缩包即可<br>
+图文教程：[https://yvu.cc/archives/1001.html](https://yvu.cc/archives/1001.html)
 
 ### 目录介绍
 
