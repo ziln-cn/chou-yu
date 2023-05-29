@@ -3,6 +3,9 @@ package test;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -158,12 +161,61 @@ public class main extends JFrame {
         btnStart.setBounds(40, 20, 120, 40);
         btnReset.setBounds(180, 20, 120, 40);
         bp.add(btnStart);bp.add(btnReset);
+        btnStart.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("开始抽奖");
+				btnStart.setEnabled(false);
+				rbStu.setSelected(true);
+			}
+        	
+        });
+        
+        btnReset.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("重置抽奖结果");
+				btnReset.setEnabled(true);
+				btnStart.setEnabled(true);
+			}
+        	
+        });
+        
+        
 
 
         group.add(rbStu);group.add(rbTracher);
         rbStu.setBounds(320, 10, 100, 20);
         rbTracher.setBounds(320, 35, 100, 20);
         bp.add(rbStu);bp.add(rbTracher);
+        rbStu.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("选择了学生");
+				rbStu.setEnabled(true);
+				rbTracher.setSelected(false);
+			}
+        	
+        });
+        
+        rbTracher.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("选择了教师");
+				rbTracher.setEnabled(true);
+				rbStu.setSelected(false);
+			}
+        	
+        });
+        
 
         picLabel.setBounds(90, 85, 250, 300);
         titleLabel.setBounds(60, 380, 300, 50);
