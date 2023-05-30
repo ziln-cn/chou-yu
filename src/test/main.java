@@ -2,11 +2,13 @@ package test;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -148,7 +150,6 @@ public class main extends JFrame {
     //创建组件
 
 
-
     public main(){
         this.setTitle("随机抽奖系统");
         this.setBounds(650, 200, 450, 600);
@@ -156,8 +157,14 @@ public class main extends JFrame {
         BackgroundPanel bp=new BackgroundPanel(Toolkit.getDefaultToolkit().
                 getImage(main.class.getResource("/imgs/main.png"))); //获取图片 反射机制
         this.setContentPane(bp);
-
-
+        
+        
+        Image image = Toolkit.getDefaultToolkit().getImage(main.class.getResource("/imgs/logo.jpg"));
+        ImageIcon icon = new ImageIcon(image);
+        picLabel.setIcon(icon);
+        picLabel.setHorizontalAlignment(JLabel.CENTER); //把校徽放在界面中
+ 
+        
         btnStart.setBounds(40, 20, 120, 40);
         btnReset.setBounds(180, 20, 120, 40);
         bp.add(btnStart);bp.add(btnReset);
