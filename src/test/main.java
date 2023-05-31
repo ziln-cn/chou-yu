@@ -141,13 +141,15 @@ public class main extends JFrame {
     private ButtonGroup group=new ButtonGroup();
     private JRadioButton rbStu=new JRadioButton("学生");
     private JRadioButton rbTeacher=new JRadioButton("教师");
+    //多选按钮
 
     private JButton btnStart=new JButton("开始抽奖");
     private JButton btnReset=new JButton("重置抽奖结果");
+    //普通按钮
 
     private JLabel picLabel=new JLabel("图片",JLabel.CENTER);
-    private JLabel titleLabel=new JLabel("湖北科技职业学院",JLabel.CENTER);
-    //创建组件
+    private JLabel titleLabel=new JLabel("湖科职",JLabel.CENTER);
+    //图片和文字
 
 
     public main(){
@@ -158,12 +160,6 @@ public class main extends JFrame {
                 getImage(main.class.getResource("/imgs/main.png"))); //获取图片 反射机制
         this.setContentPane(bp);
         
-        
-        Image image = Toolkit.getDefaultToolkit().getImage(main.class.getResource("/imgs/logo.jpg"));
-        ImageIcon icon = new ImageIcon(image);
-        picLabel.setIcon(icon);
-        picLabel.setHorizontalAlignment(JLabel.CENTER); //把校徽放在界面中
- 
         
         btnStart.setBounds(40, 20, 120, 40);
         btnReset.setBounds(180, 20, 120, 40);
@@ -176,7 +172,7 @@ public class main extends JFrame {
 				System.out.println("开始抽奖");
 				btnStart.setEnabled(false);
 				btnReset.setEnabled(false);
-				rbStu.setSelected(false);
+				rbStu.setSelected(true);
 				rbTeacher.setSelected(false);
 			}
         	
@@ -228,8 +224,23 @@ public class main extends JFrame {
         titleLabel.setFont(font);
         titleLabel.setForeground(Color.RED);
         bp.add(titleLabel);bp.add(picLabel);
+        
+          initialUI(); //初始化界面getTitle picLablel
+          initialData(); //初始化数据
     }
     //构造方法
+    
+    private void initialUI(){
+    	rbStu.setSelected(true);
+    	Person person = PersonFactory.getPerson(Person.TYPE_DEFAULT, "", "");
+    	titleLabel.setText(person.getTiTle());
+    	ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(main.class.getResource("/imgs/00000000.jpg")));
+    	picLabel.setIcon(icon);
+    }
+    
+    private void initialData(){
+    	
+    }
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
