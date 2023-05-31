@@ -140,7 +140,7 @@ public class main extends JFrame {
 
     private ButtonGroup group=new ButtonGroup();
     private JRadioButton rbStu=new JRadioButton("学生");
-    private JRadioButton rbTracher=new JRadioButton("教师");
+    private JRadioButton rbTeacher=new JRadioButton("教师");
 
     private JButton btnStart=new JButton("开始抽奖");
     private JButton btnReset=new JButton("重置抽奖结果");
@@ -175,10 +175,13 @@ public class main extends JFrame {
 				// TODO Auto-generated method stub
 				System.out.println("开始抽奖");
 				btnStart.setEnabled(false);
-				rbStu.setSelected(true);
+				btnReset.setEnabled(false);
+				rbStu.setSelected(false);
+				rbTeacher.setSelected(false);
 			}
         	
         });
+    
         
         btnReset.addActionListener(new ActionListener(){
 
@@ -186,8 +189,7 @@ public class main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("重置抽奖结果");
-				btnReset.setEnabled(true);
-				btnStart.setEnabled(true);
+				rbStu.setSelected(true);
 			}
         	
         });
@@ -195,30 +197,26 @@ public class main extends JFrame {
         
 
 
-        group.add(rbStu);group.add(rbTracher);
+        group.add(rbStu);group.add(rbTeacher);
         rbStu.setBounds(320, 10, 100, 20);
-        rbTracher.setBounds(320, 35, 100, 20);
-        bp.add(rbStu);bp.add(rbTracher);
+        rbTeacher.setBounds(320, 35, 100, 20);
+        bp.add(rbStu);bp.add(rbTeacher);
         rbStu.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("选择了学生");
-				rbStu.setEnabled(true);
-				rbTracher.setSelected(false);
+				System.out.println("学生类别抽奖");
 			}
         	
         });
         
-        rbTracher.addActionListener(new ActionListener(){
+        rbTeacher.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("选择了教师");
-				rbTracher.setEnabled(true);
-				rbStu.setSelected(false);
+				System.out.println("教师类别抽奖");
 			}
         	
         });
