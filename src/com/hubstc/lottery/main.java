@@ -20,126 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 
-class Student extends Person{
-
-    public Student(String no,String name) {
-        super(no,name,Person.TYPE_STUDENT);
-        // TODO Auto-generated constructor stub
-    }
-
-    @Override
-    public String getTiTle() {
-        // TODO Auto-generated method stub
-        String title="学号"+no2+"姓名:"+name2;
-        return null;
-    }
-    //构造方法
-
-}
-//学生信息
-
-
-class Teacher extends Person {
-    public Teacher(String no2,String name2) {
-        super(no2,name2,Person.TYPE_TEACHER);
-        // TODO Auto-generated constructor stub
-    }
-
-    @Override
-    public String getTiTle() {
-        // TODO Auto-generated method stub
-        String title="工号"+no2+"姓名:"+name2;
-        return null;
-    }
-    //构造方法
-
-}
-//老师信息
-
-
-class DefaultPerson extends Person{
-
-    public DefaultPerson() {
-        super("", "",Person.TYPE_DEFAULT);
-        // TODO Auto-generated constructor stub
-    }
-
-    @Override
-    public String getTiTle() {
-        // TODO Auto-generated method stub
-        return "湖北科技职业学院";
-    }
-    //构造方法
-
-}
-//派生类
-
-
-
-class PersonFactory{
-
-    public static Person getPerson(int type,String no2,String name2){
-        Person person=null;
-        if(no2==null||no2.isEmpty()||name2==null||name2.isEmpty()){
-            person=null;
-        }else{
-            if(type==Person.TYPE_STUDENT){
-                person=new Student(no2,name2);
-            }else if(type==Person.TYPE_TEACHER){
-                person=new Teacher(no2,name2);
-            }
-        }
-
-        if(person==null){
-            person=new DefaultPerson();
-        }
-        return person;
-    }
-
-}
-//判断以及工厂化创建实例对象
-
-
-
-abstract class Person {
-
-
-    protected String no2;
-    protected String name2;
-    protected int type;
-
-    public static final int TYPE_DEFAULT=0;
-    public static final int TYPE_STUDENT=1;
-    public static final int TYPE_TEACHER=2;
-    //创建成员变量
-
-    public Person(String no2, String name2, int typeStudent) {
-        // TODO Auto-generated constructor stub
-    }
-    public String getNo2() {
-        return no2;
-    }
-    public void setNo(String no2) {
-        this.no2 = no2;
-    }
-    public String getName2() {
-        return name2;
-    }
-    public void setName(String name2) {
-        this.name2 = name2;
-    }
-    public int getType() {
-        return type;
-    }
-    public void setType(int type) {
-        this.type = type;
-    }
-    //封装
-    public abstract String getTiTle();
-
-}
-//Person父类
-
 
 public class main extends JFrame {
 
@@ -246,7 +126,7 @@ public class main extends JFrame {
     private void initialData(){
     	try{
     		URL url = main.class.getResource("/res/student.txt");
-            File file = new File(url.getPath()); // 指定文件路径
+            File file = new File(url.getPath()); // 反射指定文件路径
             
                 BufferedReader in = new BufferedReader(new FileReader(file));
                 String line;
