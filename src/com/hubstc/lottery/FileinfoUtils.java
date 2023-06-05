@@ -25,7 +25,7 @@ public class FileinfoUtils {
         
         	List<Person> personList=new ArrayList<Person>();
             BufferedReader in = new BufferedReader(new FileReader(file));
-            String line="";
+            String line;
             while ((line = in.readLine()) != null) {
                 System.out.println(line);  //输出每一行的内容
                 String[] flag=line.split(";"); //字符串拆分

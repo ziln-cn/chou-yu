@@ -14,5 +14,14 @@ public class DefaultPerson extends Person{
     }
     //构造方法
 
+	@Override
+	public String getPicPath() {
+		// TODO Auto-generated method stub
+		String path="/imgs/"+"logo.jpg";
+		return path;
+	}
+
+	
+
 }
 //派生类

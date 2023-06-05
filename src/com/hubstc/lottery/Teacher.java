@@ -14,5 +14,12 @@ public class Teacher extends Person {
     }
     //构造方法
 
+	@Override
+	public String getPicPath() {
+		// TODO Auto-generated method stub
+		String path="/imgs/Teacher/"+no2+".jpg";
+		return path;
+	}
+
 }
 //老师信息

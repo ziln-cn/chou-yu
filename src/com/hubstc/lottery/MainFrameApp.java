@@ -127,7 +127,7 @@ public class MainFrameApp extends JFrame {
     private void displayUI(Person person){
     	titleLabel.setText(person.getTiTle());
     	ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().
-    			getImage(MainFrameApp.class.getResource("/imgs/logo.jpg")));
+    			getImage(MainFrameApp.class.getResource(person.getPicPath())));
     	picLabel.setIcon(icon);
     }
     

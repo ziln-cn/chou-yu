@@ -33,6 +33,7 @@ public abstract class Person {
     }
     //·â×°
     public abstract String getTiTle();
-
+    public abstract String getPicPath();
+    
 }
 //Person¸¸Àà
