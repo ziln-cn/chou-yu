@@ -11,7 +11,7 @@ public class Student extends Person{
     public String getTiTle() {
         // TODO Auto-generated method stub
         String title="学号"+no2+"姓名:"+name2;
-        return null;
+        return title;
     }
     //构造方法
 

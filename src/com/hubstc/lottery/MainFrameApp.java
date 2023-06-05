@@ -3,6 +3,7 @@ package com.hubstc.lottery;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.util.List;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +38,7 @@ public class MainFrameApp extends JFrame {
     //图片和文字
     
     private int type=Person.TYPE_STUDENT;//获取选择类型
+    private List<Person> persons;
 
     public MainFrameApp(){
         this.setTitle("随机抽奖系统");
@@ -120,14 +122,18 @@ public class MainFrameApp extends JFrame {
     private void initialUI(){
     	rbStu.setSelected(true);
     	Person person = PersonFactory.getPerson(Person.TYPE_DEFAULT, "", "");
+    	displayUI(person);
+    }
+    private void displayUI(Person person){
     	titleLabel.setText(person.getTiTle());
-    	ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(MainFrameApp.class.getResource("/imgs/logo.jpg")));
+    	ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().
+    			getImage(MainFrameApp.class.getResource("/imgs/logo.jpg")));
     	picLabel.setIcon(icon);
     }
     
     private void initialData(){
     	try{
-    		FileinfoUtils.getFileInfo(type);
+    		persons=FileinfoUtils.getFileInfo(type);
             }
     			catch (IOException e) {
                 e.printStackTrace();
