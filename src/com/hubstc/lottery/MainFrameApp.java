@@ -22,7 +22,7 @@ import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 
 
-public class MainFrameApp extends JFrame {
+public class MainFrameApp extends JFrame implements Runnable {
 
     private ButtonGroup group=new ButtonGroup();
     private JRadioButton rbStu=new JRadioButton("学生");
@@ -39,6 +39,7 @@ public class MainFrameApp extends JFrame {
     
     private int type=Person.TYPE_STUDENT;//获取选择类型
     private List<Person> persons;
+    private boolean flag;
 
     public MainFrameApp(){
         this.setTitle("随机抽奖系统");
@@ -58,10 +59,7 @@ public class MainFrameApp extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("开始抽奖");
-				btnStart.setEnabled(false);
-				btnReset.setEnabled(false);
-				rbStu.setSelected(true);
-				rbTeacher.setSelected(false);
+				startRun();//开始抽奖方法
 			}
         	
         });
@@ -121,6 +119,7 @@ public class MainFrameApp extends JFrame {
     
     private void initialUI(){
     	rbStu.setSelected(true);
+    	flag=true;
     	Person person = PersonFactory.getPerson(Person.TYPE_DEFAULT, "", "");
     	displayUI(person);
     }
@@ -138,6 +137,44 @@ public class MainFrameApp extends JFrame {
     			catch (IOException e) {
                 e.printStackTrace();
     	}
+    }
+    
+    private void setBtnEnable(boolean flag){
+    	btnStart.setEnabled(flag);
+		btnReset.setEnabled(flag);
+		rbStu.setSelected(flag);
+		rbTeacher.setSelected(flag);
+    }
+    private void startRun(){
+    	setBtnEnable(false);
+    	Thread thread=new Thread(this);
+    	thread.start();//run()
+    }
+    @Override
+    public void run(){
+    	//displayUI(person.get(i))
+    	int size=persons.size();//4
+    	int count=0;
+    	int currentId=0;
+    	
+    	while(flag){//取一遍集合中的元素
+    		currentId=count%size;
+    		displayUI(persons.get(currentId));
+    		
+    		if(count==90)
+    		{
+    			flag=false;
+    		}
+    		try {
+				Thread.sleep(30);//让出CPU使用权
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		count++;
+    	}
+    	flag=true;
+    	setBtnEnable(true);
     }
 
     public static void main(String[] args) {
