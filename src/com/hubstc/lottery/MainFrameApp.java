@@ -162,16 +162,24 @@ public class MainFrameApp extends JFrame implements Runnable {
     	int size=persons.size();//4
     	int count=0;
     	int currentId=0;
-    	
+    	Random rd=new Random();
+		int rdm=rd.nextInt(size);
     	while(flag){//取一遍集合中的元素
     		currentId=count%size;
     		displayUI(persons.get(currentId));
-    		Random rd=new Random();
-    		int rdm=rd.nextInt(size);
     		
-    		if(count==90+rdm)
+    		
+    		if(count==10+rdm)
     		{
     			flag=false;
+    		}
+    		int time;
+    		if(count<40){
+    			time=30;
+    		}else if(count<80){
+    			time=100;
+    		}else{
+    			time=200;
     		}
     		try {
 				Thread.sleep(30);//让出CPU使用权
