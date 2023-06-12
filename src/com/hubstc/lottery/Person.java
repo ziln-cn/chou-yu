@@ -45,5 +45,15 @@ public abstract class Person {
     	}
     	return true;
     }
+    public boolean equals(Person person){
+    	if(!this.isValid() || !person.isValid()){
+    		return false;
+    	}
+    	if(no2.equals(person.no2) && name2.equals(person.name2)){
+    		return true;
+    	}
+    	return false;
+    }
+    //两个对象判断相等
 }
 //Person父类

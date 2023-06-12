@@ -3,6 +3,7 @@ package com.hubstc.lottery;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.awt.Toolkit;
@@ -173,14 +174,14 @@ public class MainFrameApp extends JFrame implements Runnable {
     		{
     			flag=false;
     		}
-    		int time;
-    		if(count<40){
-    			time=30;
-    		}else if(count<80){
-    			time=100;
-    		}else{
-    			time=200;
-    		}
+//    		int time;
+//    		if(count<40){
+//    			time=30;
+//    		}else if(count<80){
+//    			time=100;
+//    		}else{
+//    			time=200;
+//    		}
     		try {
 				Thread.sleep(30);//让出CPU使用权
 			} catch (InterruptedException e) {
@@ -198,14 +199,44 @@ public class MainFrameApp extends JFrame implements Runnable {
     	if(isValid(listWhite) && !isValid(listBlack) ){
     		randomDisplay(listWhite);
     	}
-    	//有黑名单，没有白名单
+    	//有黑名单，没有白名单//普通名单减去黑名单
     	else if(isValid(listBlack) && !isValid(listWhite) ){
-    		
+    		List<Person> outBlackPersons=getPersonsOutBlack();
+    		randomDisplay(outBlackPersons);
     	}
     	//有黑、白名单
     	else if(isValid(listWhite) && isValid(listBlack) ){
-    		
+    		if(isWhiteInBlack()){
+    			randomDisplay(listWhite);
+    		}
     	}
+    }
+    private boolean isWhiteInBlack(){
+    	for(int i=0;i<listWhite.size();i++){
+    		Person whitePerson=listWhite.get(i);//从白名单中取出一个对象
+    		for(int j=0;j<listBlack.size();j++){
+    			Person blackPerson=listBlack.get(j);//从黑名单取出一个对象
+    			if(whitePerson.equals(blackPerson)){
+    				return true;
+    			}
+    		}
+    	}
+    	return false;
+    }
+    private List<Person> getPersonsOutBlack(){
+    	List<Person> outBlackPersons=new ArrayList<>();
+    	
+    	for(int i=0;i<persons.size();i++){//普通名单中取出一个对象
+    		Person person=persons.get(i);
+    		for(int j=0;j<listBlack.size();j++){
+    			Person blackPerson=listBlack.get(j);//黑名单中取出一个对象
+    			if(!person.equals(blackPerson)){
+    				outBlackPersons.add(person);
+    			}
+    		}
+    	}
+    	
+    	return outBlackPersons;
     }
     private void randomDisplay(List<Person> list){
     	int size=list.size();
