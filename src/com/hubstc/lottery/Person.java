@@ -39,5 +39,11 @@ public abstract class Person {
     public abstract String getTiTle();
     public abstract String getPicPath();
     
+    public boolean isValid(){
+    	if(no2==null||no2.isEmpty()||name2.isEmpty()){
+    		return false;
+    	}
+    	return true;
+    }
 }
 //Person∏∏¿‡

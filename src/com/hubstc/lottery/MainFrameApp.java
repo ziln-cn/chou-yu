@@ -195,8 +195,36 @@ public class MainFrameApp extends JFrame implements Runnable {
     }
     private void doConfigure(){
     	//有白名单，没有黑名单
+    	if(isValid(listWhite) && !isValid(listBlack) ){
+    		randomDisplay(listWhite);
+    	}
     	//有黑名单，没有白名单
+    	else if(isValid(listBlack) && !isValid(listWhite) ){
+    		
+    	}
     	//有黑、白名单
+    	else if(isValid(listWhite) && isValid(listBlack) ){
+    		
+    	}
+    }
+    private void randomDisplay(List<Person> list){
+    	int size=list.size();
+    	Random rd=new Random();
+    	int rdm=rd.nextInt(size);
+    	displayUI(list.get(rdm));
+    }
+    private boolean isValid(List<Person> list){
+    	if(list==null||list.size()<1){
+    		return false;
+    	}
+    	for(int i=0;i<list.size();i++){
+    		Person person=list.get(i);
+    		if(person.isValid()){ //person is valid
+    			return true;
+    		}
+    	}
+    	
+    	return false;
     }
 
     public static void main(String[] args) {
