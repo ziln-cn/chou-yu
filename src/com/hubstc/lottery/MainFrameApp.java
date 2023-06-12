@@ -40,11 +40,13 @@ public class MainFrameApp extends JFrame implements Runnable {
     
     private int type=Person.TYPE_STUDENT;//获取选择类型
     private List<Person> persons;
+    private List<Person> listWhite;
+    private List<Person> listBlack;
     private boolean flag;
 
     public MainFrameApp(){
         this.setTitle("随机抽奖系统");
-        this.setBounds(650, 200, 450, 600);
+        this.setBounds(650, 250, 450, 600);
         this.setResizable(false);
         BackgroundPanel bp=new BackgroundPanel(Toolkit.getDefaultToolkit().
                 getImage(MainFrameApp.class.getResource("/imgs/main.png"))); //获取图片 反射机制
@@ -127,13 +129,16 @@ public class MainFrameApp extends JFrame implements Runnable {
     private void displayUI(Person person){
     	titleLabel.setText(person.getTiTle());
     	ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().
-    			getImage(MainFrameApp.class.getResource(person.getPicPath())));
+    			getImage(MainFrameApp.class.getResource(person.getPicPath()))); //取各用户自己的图片
     	picLabel.setIcon(icon);
     }
     
     private void initialData(){
     	try{
-    		persons=FileinfoUtils.getFileInfo(type);
+    		persons=FileinfoUtils.getFileInfo(type,FileinfoUtils.CONFIG_TYPE); //普通名单
+    		listWhite=FileinfoUtils.getFileInfo(type, FileinfoUtils.WHITE_TYPE);  //白名单
+    		listBlack=FileinfoUtils.getFileInfo(type, FileinfoUtils.BLACK_TYPE);  //黑名单
+    		
             }
     			catch (IOException e) {
                 e.printStackTrace();
@@ -143,8 +148,8 @@ public class MainFrameApp extends JFrame implements Runnable {
     private void setBtnEnable(boolean flag){
     	btnStart.setEnabled(flag);
 		btnReset.setEnabled(flag);
-		rbStu.setSelected(flag);
-		rbTeacher.setSelected(flag);
+		rbStu.setEnabled(flag);
+		rbTeacher.setEnabled(flag);
     }
     private void startRun(){
     	setBtnEnable(false);
@@ -176,8 +181,14 @@ public class MainFrameApp extends JFrame implements Runnable {
 			}
     		count++;
     	}
+    	doConfigure();//配置黑白名单
     	flag=true;
     	setBtnEnable(true);
+    }
+    private void doConfigure(){
+    	//有白名单，没有黑名单
+    	//有黑名单，没有白名单
+    	//有黑、白名单
     }
 
     public static void main(String[] args) {
