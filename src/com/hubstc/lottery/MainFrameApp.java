@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.util.List;
+import java.util.Random;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -160,8 +161,10 @@ public class MainFrameApp extends JFrame implements Runnable {
     	while(flag){//取一遍集合中的元素
     		currentId=count%size;
     		displayUI(persons.get(currentId));
+    		Random rd=new Random();
+    		int rdm=rd.nextInt(size);
     		
-    		if(count==90)
+    		if(count==90+rdm)
     		{
     			flag=false;
     		}

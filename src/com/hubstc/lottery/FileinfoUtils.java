@@ -10,9 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileinfoUtils {
-	public static List<Person> getFileInfo(int personType) throws IOException{
+	
+	public static final int CONFIG_TYPE=0; //普通文件
+	public static final int WHITE_TYPE=1;  //白名单
+	public static final int BLACK_TYPE=2;  //黑名单
+	
+	public static List<Person> getFileInfo(int personType,int fileType) throws IOException{
 		//根据用户类型判断，读文件的路径
+		String prefix="";
 		String filePath="/res/";
+		
+		if(fileType==CONFIG_TYPE){
+			
+		}else if(fileType==WHITE_TYPE){
+			prefix="white_";
+		}else if(fileType==BLACK_TYPE){
+			prefix="black_";
+		}
 		
 		if(personType==Person.TYPE_STUDENT){
 			filePath=filePath+"student.txt";
@@ -25,7 +39,7 @@ public class FileinfoUtils {
         
         	List<Person> personList=new ArrayList<Person>();
             BufferedReader in = new BufferedReader(new FileReader(file));
-            String line;
+            String line="";
             while ((line = in.readLine()) != null) {
                 System.out.println(line);  //输出每一行的内容
                 String[] flag=line.split(";"); //字符串拆分
