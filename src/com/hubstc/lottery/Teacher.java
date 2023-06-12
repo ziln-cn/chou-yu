@@ -9,10 +9,10 @@ public class Teacher extends Person {
     @Override
     public String getTiTle() {
         // TODO Auto-generated method stub
-        String title="¹¤ºÅ"+no2+"ĞÕÃû:"+name2;
-        return null;
+        String title="å·¥å·"+no2+"å§“å:"+name2;
+        return title;
     }
-    //¹¹Ôì·½·¨
+    //æ„é€ æ–¹æ³•
 
 	@Override
 	public String getPicPath() {
@@ -22,4 +22,4 @@ public class Teacher extends Person {
 	}
 
 }
-//ÀÏÊ¦ĞÅÏ¢
+//è€å¸ˆä¿¡æ¯
